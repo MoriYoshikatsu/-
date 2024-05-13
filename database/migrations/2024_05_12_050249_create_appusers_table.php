@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('appusers', function (Blueprint $table) {
             $table->id();
             $table->string('name'); //ユーザーネーム
             $table->string('selfintro', 200); //自己紹介文
-            $table->string('icon_path'); //アイコン
+            $table->string('icon_path')->nullable(); //アイコン
             $table->string('email')->unique(); //メルアド
             $table->timestamp('email_verified_at');
             $table->string('password');
             $table->rememberToken();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('appusers');
     }
 };

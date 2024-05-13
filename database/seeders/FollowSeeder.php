@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Follow;
 
-class UsersSeeder extends Seeder
+class FollowSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +15,6 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\users::factory()->count(10)->create();
-
+        \App\Models\Follow::factory()->count(10)->create();
     }
 }
