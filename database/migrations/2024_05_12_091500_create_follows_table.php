@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('follows', function (Blueprint $table) {
-            $table->foreignId();
-            $table->foreignId('follower')->constrained('appuser')->onDelete('cascade');
-            $table->foreignId('followee')->constrained('appuser')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('follower')->constrained('appusers')->onDelete('cascade');
+            $table->foreignId('followee')->constrained('appusers')->onDelete('cascade');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();

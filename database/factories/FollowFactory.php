@@ -17,8 +17,8 @@ class FollowFactory extends Factory
     public function definition()
     {
         return [
-            'follower_id' => $this ->1,
-            'followee_id' => $this ->2,
+            'follower' =>1,
+            'followee' =>2,
             'created_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
             'updated_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
         ];
