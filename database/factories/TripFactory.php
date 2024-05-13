@@ -17,7 +17,7 @@ class TripFactory extends Factory
     public function definition()
     {
         return [
-            'appuser' => 1,
+            'appuser_id' => 1,
             'title' => $this ->faker->realText(10), //トリップリストのタイトル
             'description' => $this ->faker->realText(10), //トリップリストの説明・メモ書き
             'first_point' => $this ->faker->realText(10), //初期ランダムピン地点名

@@ -14,6 +14,6 @@ class GoodSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Good::factory()->count(10)->create();
     }
 }

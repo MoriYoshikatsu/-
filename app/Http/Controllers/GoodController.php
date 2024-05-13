@@ -9,6 +9,6 @@ class GoodController extends Controller
 {
     public function index(good $good)
     {
-        return $goodr->get();
+        return $good->get();
     }
 }

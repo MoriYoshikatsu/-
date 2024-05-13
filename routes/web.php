@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppuserController;  //外部にあるPostControllerクラスをインポート。
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\TripController;
+use App\Http\Controllers\GoodController;
 
-Route::get('/', [TripController::class, 'index']);
+Route::get('/', [GoodController::class, 'index']);
 
 
 Route::get('/dashboard', function () {

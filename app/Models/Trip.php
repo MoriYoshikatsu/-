@@ -17,6 +17,7 @@ class Trip extends Model
         'password',
     ];
     */
+    
      public function appuser()
     {
         return $this->belongsTo(appuser::class);
@@ -26,7 +27,7 @@ class Trip extends Model
     {
         return $this->hasMany(spot_trip::class);
     }
-    
+    */
     public function good()   
     {
         return $this->hasMany(good::class);
