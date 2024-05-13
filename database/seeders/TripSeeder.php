@@ -4,9 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Appuser;
+use App\Models\Trip;
 
-class AppuserSeeder extends Seeder
+class TripSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class AppuserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Appuser::factory()->count(10)->create();
+        \App\Models\Trip::factory()->count(10)->create();
     }
 }
