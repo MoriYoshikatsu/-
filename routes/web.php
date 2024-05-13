@@ -6,7 +6,7 @@ use App\Http\Controllers\AppuserController;  //外部にあるPostControllerク�
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\TripController;
 
-Route::get('/', [TripController::class, 'index']);
+Route::get('/', [GoodController::class, 'index']);
 
 
 Route::get('/dashboard', function () {

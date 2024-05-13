@@ -17,7 +17,11 @@ class GoodFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'appuser_id' => 2,
+            'trip_id' => 3,
+            'status' => 0,
+            'created_at' => $this ->faker->date('Y-m-d H:i:s', 'now'),
+            'updated_at' => $this ->faker->date('Y-m-d H:i:s', 'now'),
         ];
     }
 }
