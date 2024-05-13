@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appuser extends Model
+class Trip extends Model
 {
     use HasFactory;
+    /*
     protected $fillable = [
         'name',
         'selfintro',
@@ -15,22 +16,27 @@ class Appuser extends Model
         'email',
         'password',
     ];
-    
-    public function follow()   
+    */
+     public function appuser()
     {
-        return $this->hasMany(follow::class);
+        return $this->belongsTo(appuser::class);
     }
     /*
+    public function spot_trip()   
+    {
+        return $this->hasMany(spot_trip::class);
+    }
+    
     public function good()   
     {
         return $this->hasMany(good::class);
     }
-    */
-    public function trip()   
-    {
-        return $this->hasMany(trip::class);
-    }
     /*
+    public function ()   
+    {
+        return $this->hasMany(::class);
+    }
+    
     public function ()   
     {
         return $this->hasMany(::class);
