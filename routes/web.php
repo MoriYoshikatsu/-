@@ -2,11 +2,9 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;  //外部にあるPostControllerクラスをインポート。
+use App\Http\Controllers\AppuserController;  //外部にあるPostControllerクラスをインポート。
 
-Route::get('/', function () {
-    return view('post.index');
-});
+Route::get('/', [FollowController::class, 'index']);
 
 
 Route::get('/dashboard', function () {
