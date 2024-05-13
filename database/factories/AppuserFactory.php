@@ -20,7 +20,7 @@ class AppuserFactory extends Factory
         return [
             'name' => $this ->faker->realText(10),
             'selfintro' => $this ->faker->realText(100),
-            'email' => $this ->faker->realText(10),
+            'email' => $this ->faker->email(),
             'password' => $this ->faker->realText(10),
             'created_at' => $this ->faker->date('Y-m-d H:i:s', 'now'),
             'updated_at' => $this ->faker->date('Y-m-d H:i:s', 'now'),
