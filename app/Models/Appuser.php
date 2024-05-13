@@ -20,12 +20,12 @@ class Appuser extends Model
     {
         return $this->hasMany(follow::class);
     }
-    /*
+    
     public function good()   
     {
         return $this->hasMany(good::class);
     }
-    */
+    
     public function trip()   
     {
         return $this->hasMany(trip::class);

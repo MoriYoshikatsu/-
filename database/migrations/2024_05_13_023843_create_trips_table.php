@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appuser')->constrained('appusers')->onDelete('cascade');
+            $table->foreignId('appuser_id')->constrained('appusers')->onDelete('cascade');
             $table->string('title'); //トリップリストのタイトル
             $table->string('description'); //トリップリストの説明・メモ書き
             $table->string('first_point'); //初期ランダムピン地点名

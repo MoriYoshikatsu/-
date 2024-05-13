@@ -21,12 +21,12 @@ class Good extends Model
     {
         return $this->belongsTo(appuser::class);
     }
-    /*
-    public function ()   
-    {
-        return $this->hasMany(::class);
-    }
     
+    public function trip()   
+    {
+        return $this->belongsTo(trip::class);
+    }
+    /*
     public function ()   
     {
         return $this->hasMany(::class);
