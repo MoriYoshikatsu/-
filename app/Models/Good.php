@@ -5,27 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Appuser extends Model
+class Good extends Model
 {
     use HasFactory;
-    protected $fillable = [
+    /*protected $fillable = [
         'name',
         'selfintro',
         'icon_path',
         'email',
         'password',
     ];
+    */
     
-    public function follow()   
+    public function appuser()
     {
-        return $this->hasMany(follow::class);
-    }
-    
-    public function good()   
-    {
-        return $this->hasMany(good::class);
+        return $this->belongsTo(appuser::class);
     }
     /*
+    public function ()   
+    {
+        return $this->hasMany(::class);
+    }
+    
     public function ()   
     {
         return $this->hasMany(::class);
