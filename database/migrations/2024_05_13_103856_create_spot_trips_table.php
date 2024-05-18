@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('goods', function (Blueprint $table) {
+        Schema::create('spot_trips', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appuser_id')->constrained('appusers')->onDelete('cascade');
+            $table->foreignId('spot_id')->constrained('spots')->onDelete('cascade');
             $table->foreignId('trip_id')->constrained('trips')->onDelete('cascade');
-            $table->integer('status'); //五つ星評価にできる余裕があればする
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
-            $table->softDeletes();
-        
+            $table->integer('status');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('goods');
+        Schema::dropIfExists('spot_trips');
     }
 };
