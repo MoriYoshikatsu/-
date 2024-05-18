@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Good>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Image>
  */
-class GoodFactory extends Factory
+class ImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,8 @@ class GoodFactory extends Factory
     public function definition()
     {
         return [
-            'appuser_id' =>1,
-            'trip_id' =>2,
-            'status' =>0,
+            'trip_id' =>1,
+            'image_path' => $this ->faker->realText(10),
             'created_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
             'updated_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
         ];

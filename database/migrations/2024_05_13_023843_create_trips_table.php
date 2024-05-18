@@ -24,7 +24,7 @@ return new class extends Migration
             $table->timestamp('trip_date_at')->nullable(); //旅行した日時
             $table->string('trip_time'); //旅行にかかる時間
             $table->string('transportation'); //移動手段
-            $table->string('status'); //公開非公開ステータス
+            $table->integer('status'); //公開非公開ステータス
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
