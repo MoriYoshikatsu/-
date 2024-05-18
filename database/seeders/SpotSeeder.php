@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Spot;
 
-class SpotCategoriesSeeder extends Seeder
+class SpotSeeder extends Seeder
 {
     /**
      * Run the database seeds.
