@@ -16,5 +16,6 @@ class AppuserSeeder extends Seeder
     public function run()
     {
         \App\Models\Appuser::factory()->count(10)->create();
+
     }
 }
