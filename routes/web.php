@@ -8,8 +8,9 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\ImageController;
 
-Route::get('/', [ImageController::class, 'index']);
-
+Route::get('/', function () {
+    return view('welcome');
+   });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
