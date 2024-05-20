@@ -74,7 +74,7 @@ window.initMap = initMap;
 var map; //infoWindow;
 var marker;
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
    
     // 位置情報の取得
       navigator.geolocation.getCurrentPosition(
@@ -87,20 +87,20 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error("Error getting geolocation:", error);
         }
       );
-})
+})*/
     // Google Maps API を使用して地図を初期化する関数
     function initMap(position) {
         // 地図を表示する要素を取得
         const mapElement = document.getElementById('map');
         // 現在地の位置情報
-        const currentLat = position.coords.latitude; //現在地の
-        const currentLng = position.coords.longitude;
-        const currentLocation = new google.maps.LatLng(currentLat, currentLng);
-        
+        //const currentLat = position.coords.latitude; //現在地の
+        //const currentLng = position.coords.longitude;
+        //const currentLocation = new google.maps.LatLng(currentLat, currentLng);
+        var tokyoTower = {lat: 35.6585769, lng: 139.7454506};
 
         // 地図を作成
         map = new google.maps.Map(mapElement, {
-            center: currentLocation, // 東京駅を中心に表示
+            center: tokyoTower, // 東京駅を中心に表示
             zoom: 15
         });
     
