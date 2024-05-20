@@ -42,7 +42,7 @@
         var map;
 
         // Google Maps API を使用して地図を初期化する関数
-        function initMap() {
+{{--        function initMap() {
             // 地図を表示する要素を取得
             var mapElement = document.getElementById('map');
             // 東京駅の位置情報
@@ -54,7 +54,7 @@
                 center: tokyoStation, // 東京駅を中心に表示
                 zoom: defaultZoom
             });
-
+--}}
             // マップ上でクリックされたときのイベントハンドラを追加
             map.addListener('click', function(event) {
                 // クリックされた位置の緯度経度を取得

@@ -31,7 +31,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     
-    'key' => env('API_KEY'),
+    'map_api'=> env('MAP_API'),
 
     'teratail' => [
         'token' => env('TERATAIL_ACCESS_TOKEN')

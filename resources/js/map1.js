@@ -1,24 +1,7 @@
-//import { Loader } from "@googlemaps/js-api-loader"
-/*
-const loader = new Loader({
-  apiKey: "AIzaSyDPnPowYaXu2Nod_C65uSJfQqdhs5FnoLU",
-  version: "weekly",
-  ...additionalOptions,
-});
-
-loader.load().then(async () => {
-  const { Map } = await google.maps.importLibrary("maps");
-
-  map = new Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-});*/
 // Note: This example requires that you consent to location sharing when
 // prompted by your browser. If you see the error "The Geolocation service
 // failed.", it means you probably did not give permission for the browser to
-// locate you.*/
-
+// locate you.
 /*let map, infoWindow;
 
 function initMap() {
@@ -74,40 +57,22 @@ window.initMap = initMap;
 var map; //infoWindow;
 var marker;
 
-document.addEventListener("DOMContentLoaded", () => {
-   
-    // 位置情報の取得
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // 位置情報が取得できたらinitMapを呼び出す
-          initMap(position);
-//           console.log(position);
-        },
-        (error) => {
-          console.error("Error getting geolocation:", error);
-        }
-      );
-})
     // Google Maps API を使用して地図を初期化する関数
-    function initMap(position) {
+    async function initMap() {
         // 地図を表示する要素を取得
-        const mapElement = document.getElementById('map');
-        // 現在地の位置情報
-        const currentLat = position.coords.latitude; //現在地の
-        const currentLng = position.coords.longitude;
-        const currentLocation = new google.maps.LatLng(currentLat, currentLng);
-        
+        var mapElement = document.getElementById('map');
+        // 東京駅の位置情報
+        var tokyoStation = { lat: 35.681236, lng: 139.767125 };
+        var defaultZoom = 15; // デフォルトのズームレベル
 
         // 地図を作成
         map = new google.maps.Map(mapElement, {
-            center: currentLocation, // 東京駅を中心に表示
-            zoom: 15
+            center: tokyoStation, // 東京駅を中心に表示
+            zoom: defaultZoom
         });
-    
-
 //        infoWindow = new google.maps.InfoWindow();
         
-        // マップ上でクリックされたときのイベントハンドラを追加
+    // マップ上でクリックされたときのイベントハンドラを追加
         map.addListener('click', function(event) {
             // クリックされた位置の緯度経度を取得
             var clickedLocation = event.latLng;
@@ -123,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // 住所を表示する関数を呼び出し
             displayAddress(clickedLocation);
         });
-    }
+}
         // 住所を表示する関数
     function displayAddress(latlng) {
         // Geocoderオブジェクトを作成
@@ -182,8 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
             'お使いのブラウザはGeolocationをサポートしていません';
         alert(error_message);
     }
-
-    // 近辺検索を行う関数
+    
+/*    // 近辺検索を行う関数
     
     async function searchNearby() {
         const {PlacesService} = await google.maps.importLibrary("places");
@@ -218,10 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             infowindow.open(map, this);
         });
-    }
+*/    
 
-/*
-let map;
+initMap();
+/*let map;
 // googleMapsAPIを持ってくるときに,callback=initMapと記述しているため、initMap関数を作成
 async function initMap() {
     //@ts-ignore
