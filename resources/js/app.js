@@ -61,7 +61,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 }
 
 window.initMap = initMap;
-*/
+
 var map; //infoWindow;
 var marker;
 
@@ -191,7 +191,7 @@ var marker;
             });
             infowindow.open(map, this);
         });
-*/    
+
 
 initMap();
 /*let map;

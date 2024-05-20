@@ -9,7 +9,7 @@ use App\Http\Controllers\GoodController;
 use App\Http\Controllers\ImageController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home2');
    });
 
 Route::get('/dashboard', function () {

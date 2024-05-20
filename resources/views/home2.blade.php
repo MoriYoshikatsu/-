@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <title>Simple Map</title>
@@ -7,10 +8,24 @@
     <script type="module" src="{{ asset('/js/map1.js') }}"></script>
   </head>
   <body>
+    {{--<button onclick="getCurrentLocation()">位置情報を取得する</button>
+    
+    <!-- 「近辺検索」ボックスとボタン -->
+    <input type="text" id="keyword" placeholder="キーワードを入力">
+    <button onclick="searchNearby()">近辺検索</button>--}}
+ <h1>出発地を決めよう</h1>
     <div id="map"></div>
+    <a onclick="getCurrentLocation()" class="btn btn--orange btn--cubic btn--shadow">位置情報を取得！</a>
+    <h2>住所</h2>
+                <input id="address" type="text" name="post[address]" placeholder="タイトル" value=""/>
 
-    <!-- prettier-ignore -->
-    <script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-        ({key: "AIzaSyDPnPowYaXu2Nod_C65uSJfQqdhs5FnoLU", v: "weekly"});</script>
+                <p class="title__error" style="color:red">{{ $errors->first('address') }}</p>
+            </div>
+    
+            </div>
+            <input type="submit" value="保存" class="btn btn--orange btn--cubic btn--shadow" />
+        </form>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.map_api') }}&callback=initMap"></script>
   </body>
 </html>
