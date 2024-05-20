@@ -7,10 +7,16 @@ use App\Http\Controllers\FollowController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\GoodController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\SpotCategoryController;
+use App\Http\Controllers\SpotController;
+use App\Http\Controllers\SpotTripController;
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('home2');
    });
+*/
+
+Route::get('/', [SpotCategoryController::class, 'create'])->name('profile.edit');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
