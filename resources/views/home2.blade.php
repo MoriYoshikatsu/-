@@ -54,12 +54,12 @@
             <!-- 「近辺検索」ボックスとボタン -->
             <input type="text" id="keyword" placeholder="キーワードを入力">
             <button onclick="searchNearby()">近辺検索</button>
-      
+            
           <div class="address">
               <h2>どこから出発する？</h2>
               <input id="address" type="text" name="post[address]" placeholder="タイトル" value=""/>
               <p class="title__error" style="color:red">{{ $errors->first('address') }}</p>
-              <input type="submit" value="ここから出発する！"/>
+              <a href="/firstpin">ここから出発する！</a>
           </div>
       </form>
   
