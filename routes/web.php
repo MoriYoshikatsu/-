@@ -16,7 +16,9 @@ use App\Http\Controllers\SpotTripController;
    });
 */
 
-Route::get('/', [SpotCategoryController::class, 'create'])->name('profile.edit');
+Route::get('/', [SpotCategoryController::class, 'destination'])->name('destination');
+Route::get('/firstpin', [SpotController::class, 'firstpin'])->name('firstpin');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
