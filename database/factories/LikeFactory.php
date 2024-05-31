@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Good>
  */
-class GoodFactory extends Factory
+class LikeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,11 +17,11 @@ class GoodFactory extends Factory
     public function definition()
     {
         return [
-            'appuser_id' =>1,
+            'user_id' =>1,
             'trip_id' =>2,
-            'status' =>0,
-            'created_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
-            'updated_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
+/*            'status' =>0,*/
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

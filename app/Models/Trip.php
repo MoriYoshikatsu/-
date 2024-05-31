@@ -7,40 +7,42 @@ use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
 {
-    use HasFactory;
-    /*
-    protected $fillable = [
-        'name',
-        'selfintro',
-        'icon_path',
-        'email',
-        'password',
-    ];
-    */
-    
-     public function appuser()
-    {
-        return $this->belongsTo(appuser::class);
-    }
-    /*
-    public function spot_trip()   
-    {
-        return $this->hasMany(spot_trip::class);
-    }
-    */
-    public function good()   
-    {
-        return $this->hasMany(good::class);
-    }
-    /*
-    public function ()   
-    {
-        return $this->hasMany(::class);
-    }
-    
-    public function ()   
-    {
-        return $this->hasMany(::class);
-    }
-    */
+	use HasFactory;
+	
+	protected $fillable = [
+		'user_id',
+		'title',
+		'description',
+		'dart_latitude',
+		'dart_longitude',
+		'trip_date',
+		'status',
+		'created_at',
+		'updated_at',
+	];
+	
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
+/*	
+	 public function parameter()
+	{
+		return $this->belongsTo(Parameter::class);
+	}
+*/	
+	public function spot_trips()   
+	{
+		return $this->hasMany(SpotTrip::class);
+	}
+	
+	public function likes()   
+	{
+		return $this->hasMany(Like::class);
+	}
+	
+	public function images() 
+	{
+		return $this->hasmany(Image::class);
+	}
 }

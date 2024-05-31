@@ -4,9 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Spot;
 
-class SpotSeeder extends Seeder
+class ParameterSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class SpotSeeder extends Seeder
      */
     public function run()
     {
-        Spot::factory()->count(10)->create(); //綱川
+        \App\Models\Parameter::factory()->count(10)->create();
     }
 }

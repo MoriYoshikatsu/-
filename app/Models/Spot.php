@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Spot extends Model
 {
     use HasFactory;
+    
+    public function spot_trips() {
+        return $this->hasmany(SpotTrip::class);
+    }
+    
+    public function spot_category() {
+        return $this->belongsTo(SpotCategory::class);
+    }
 }

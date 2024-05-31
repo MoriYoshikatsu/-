@@ -17,9 +17,9 @@ class Follow extends Model
     ];
     */
     
-    public function appuser()
+    public function user()
     {
-        return $this->belongsTo(appuser::class);
+        return $this->belongsTo(User::class);
     }
     /*
     public function ()   

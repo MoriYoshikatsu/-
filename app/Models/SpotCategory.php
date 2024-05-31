@@ -17,13 +17,13 @@ class SpotCategory extends Model
     ];
     */
     
-    public function spot()   
+    public function spots()   
     {
-        return $this->hasMany(spot::class);
+        return $this->hasMany(Spot::class);
     }
-    /*
-    public function ()   
+    
+    public function parameters()   
     {
-        return $this->hasMany(::class);
-    }*/
+        return $this->hasMany(Parameter::class);
+    }
 }

@@ -19,8 +19,8 @@ class FollowFactory extends Factory
         return [
             'follower_id' =>1,
             'followee_id' =>2,
-            'created_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
-            'updated_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

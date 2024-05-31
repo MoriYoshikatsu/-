@@ -15,18 +15,15 @@ return new class extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appuser_id')->constrained('appusers')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->nullable();
+            $table->foreignId('parameter_id')->constrained('parameters')->onDelete('cascade');
             $table->string('title'); //トリップリストのタイトル
-            $table->string('description'); //トリップリストの説明・メモ書き
-            $table->string('first_point'); //初期ランダムピン地点名
-            $table->string('first_latitude'); //初期ランダムピン緯度
-            $table->string('first_longitude'); //初期ランダムピン経度
-            $table->timestamp('trip_date_at')->nullable(); //旅行した日時
-            $table->string('trip_time'); //旅行にかかる時間
-            $table->string('transportation'); //移動手段
+            $table->string('description')->nullable(); //トリップリストの説明・メモ書き
+            $table->double('dart_latitude'); //初期ランダムピン緯度
+            $table->double('dart_longitude'); //初期ランダムピン経度
+            $table->date('trip_date')->nullable(); //旅行日
             $table->integer('status'); //公開非公開ステータス
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamps();
             $table->softDeletes();
         });
     }

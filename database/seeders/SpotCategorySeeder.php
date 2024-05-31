@@ -16,8 +16,8 @@ class SpotCategorySeeder extends Seeder
      */
     public function run()
     {
-        $englishFile = database_path('spot_category_translation');
-        $japaneseFile = database_path('japanese_spot_category_translation');
+        $englishFile = database_path('en_spot_category');
+        $japaneseFile = database_path('ja_spot_category');
 
         $englishData = file($englishFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
         $japaneseData = file($japaneseFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
@@ -28,8 +28,8 @@ class SpotCategorySeeder extends Seeder
 
         for ($i = 0; $i < count($englishData); $i++) {
             SpotCategory::create([
-                'name' => $englishData[$i],
-                'jtrans' => $japaneseData[$i]
+                'en_name' => $englishData[$i],
+                'ja_name' => $japaneseData[$i]
             ]);
         }
     }

@@ -18,9 +18,9 @@ class ImageFactory extends Factory
     {
         return [
             'trip_id' =>1,
-            'image_path' => $this ->faker->realText(10),
-            'created_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
-            'updated_at' => $this ->faker-> date('Y-m-d H:i:s', 'now'),
+            'image_url' => 'a',
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

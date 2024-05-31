@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\SpotCategory;
+use App\Models\Like;
 
-class SpotCategoryController extends Controller
+class LikeController extends Controller
 {
-    public function departureForm(SpotCategory $spot_category)
-    {
-        return view('home2')->with(['spot_categories' => $spot_category->get()]);
-        dd();
-    }
     /**
      * Display a listing of the resource.
      *
@@ -46,10 +41,10 @@ class SpotCategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Spot_category  $spot_category
+     * @param  \App\Models\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function show(Spot_category $spot_category)
+    public function show(Like $like)
     {
         //
     }
@@ -57,10 +52,10 @@ class SpotCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Spot_category  $spot_category
+     * @param  \App\Models\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function edit(Spot_category $spot_category)
+    public function edit(Like $like)
     {
         //
     }
@@ -69,10 +64,10 @@ class SpotCategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Spot_category  $spot_category
+     * @param  \App\Models\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Spot_category $spot_category)
+    public function update(Request $request, Like $like)
     {
         //
     }
@@ -80,10 +75,10 @@ class SpotCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Spot_category  $spot_category
+     * @param  \App\Models\Like  $like
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Spot_category $spot_category)
+    public function destroy(Like $like)
     {
         //
     }

@@ -19,7 +19,7 @@ class Image extends Model
     
     public function trip()   
     {
-        return $this->belongsTo(trip::class);
+        return $this->belongsTo(Trip::class);
     }
     /*
     public function ()   
