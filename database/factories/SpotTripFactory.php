@@ -17,7 +17,11 @@ class SpotTripFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'spot_id' => 1,
+            'trip_id' => 1,
+            'status' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

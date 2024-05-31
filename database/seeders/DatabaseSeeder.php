@@ -20,11 +20,15 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        \App\Models\Appuser::factory()->count(10)->create();
-        \App\Models\Follow::factory()->count(10)->create();
-        \App\Models\Trip::factory()->count(10)->create();
-        \App\Models\Good::factory()->count(10)->create();
-        \App\Models\Image::factory()->count(10)->create();
+        $this->call(UserSeeder::class);
+        $this->call(SpotCategorySeeder::class);
+        $this->call(ParameterSeeder::class);
+        $this->call(SpotSeeder::class);
+        $this->call(TripSeeder::class);
+        $this->call(SpotTripSeeder::class);
+        $this->call(LikeSeeder::class);
+        $this->call(ImageSeeder::class);
+        $this->call(FollowSeeder::class);
 
     }
 }

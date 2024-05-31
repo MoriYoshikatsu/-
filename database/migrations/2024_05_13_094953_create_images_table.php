@@ -16,9 +16,8 @@ return new class extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('trip_id')->constrained('trips')->onDelete('cascade');
-            $table->string('image_path')->nullable(); //画像のパス
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->string('image_url')->nullable(); //画像のパス
+            $table->timestamps();
             $table->softDeletes();
         });
     }

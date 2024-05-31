@@ -17,16 +17,16 @@ class TripFactory extends Factory
     public function definition()
     {
         return [
-            'appuser_id' => 1,
-            'title' => $this ->faker->realText(10), //トリップリストのタイトル
-            'description' => $this ->faker->realText(10), //トリップリストの説明・メモ書き
-            'first_point' => $this ->faker->realText(10), //初期ランダムピン地点名
-            'first_latitude' => $this ->faker->realText(10), //初期ランダムピン緯度
-            'first_longitude' => $this ->faker->realText(10), //初期ランダムピン経度
-            'trip_date_at' => $this ->faker->date('Y-m-d H:i:s', 'now'), //旅行した日時
-            'trip_time' => $this ->faker->realText(10), //旅行にかかる時間
-            'transportation' => $this ->faker->realText(10), //移動手段
-            'status' => 0, //公開非公開ステータス
+            'user_id' =>1,
+            'parameter_id' => 1,
+            'title' => fake()->word,
+            'description' => fake()->realText(),
+            'dart_latitude' => fake()-> randomFloat(2, 30, 40),
+            'dart_longitude' => fake()-> randomFloat(2, 130, 140),
+            'trip_date' => fake()-> date(),
+            'status' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

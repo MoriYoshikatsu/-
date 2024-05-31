@@ -17,7 +17,12 @@ class SpotFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'spot_category_id' => 1,
+            'name' => fake()-> secondaryAddress(),
+            'latitude' => fake()-> randomFloat(2, 30, 40),
+            'longitude' => fake()-> randomFloat(2, 130, 140),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

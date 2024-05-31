@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class GoodSeeder extends Seeder
+class LikeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class GoodSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Good::factory()->count(10)->create();
+        \App\Models\Like::factory()->count(10)->create();
     }
 }
