@@ -11,10 +11,9 @@ class Trip extends Model
 	
 	protected $fillable = [
 		'user_id',
+		'parameter_id',
 		'title',
 		'description',
-		'dart_latitude',
-		'dart_longitude',
 		'trip_date',
 		'status',
 		'created_at',
@@ -25,17 +24,21 @@ class Trip extends Model
 	{
 		return $this->belongsTo(User::class);
 	}
-/*	
+	
 	 public function parameter()
 	{
 		return $this->belongsTo(Parameter::class);
 	}
-*/	
+	
+	public function spots() {
+		return $this->belongsToMany(Spot::class);
+	}
+/*	
 	public function spot_trips()   
 	{
 		return $this->hasMany(SpotTrip::class);
 	}
-	
+*/	
 	public function likes()   
 	{
 		return $this->hasMany(Like::class);

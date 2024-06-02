@@ -18,7 +18,7 @@ class FollowFactory extends Factory
     {
         return [
             'follower_id' =>1,
-            'followee_id' =>2,
+            'followee_id' =>1,
             'created_at' => now(),
             'updated_at' => now(),
         ];

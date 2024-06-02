@@ -5,15 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Spot_trip extends Model
+class SpotTrip extends Model
 {
-    use HasFactory;
-    
-    public function trip() {
-        return $this->belongsTo(User::class);
-    }
-    
-    public function spot() {
-        return $this->belongsTo(SpotTrip::class);
-    }
+	use HasFactory;
+	protected $fillable = [
+		'spot_id',
+		'trip_id',
+		'status',
+		'created_at',
+		'updated_at',
+	];
+/*	
+	public function trips(){
+		return $this->belongsToMany(Trip::class);
+	}
+	
+	public function spots() {
+		return $this->belongsToMany(Spot::class);
+	}
+*/
 }

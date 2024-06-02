@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Parameter;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -45,7 +46,8 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+		$parameter = Parameter::latest("updated_at")->first();
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect('/parameters/' . $parameter->id . '/dart');
     }
 }

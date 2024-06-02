@@ -15,6 +15,8 @@ class Parameter extends Model
 		'departure_longitude',
 		'trip_time',
 		'transportation',
+		'dart_latitude',
+		'dart_longitude',
 		'created_at',
 		'updated_at',
 	];
