@@ -13,24 +13,25 @@ use App\Http\Controllers\SpotTripController;
 use App\Http\Controllers\ParameterController;
 
 Route::get('/welcome', function () {
-    return view('welcome');
+	return view('welcome');
    });
 
-Route::get('/', [ParameterController::class, 'parameters'])->name('parameters');
-Route::post('/parameters/input', [ParameterController::class, 'parameters_input'])->name('parameters_input');
+Route::get('/', [ParameterController::class, 'parameter'])->name('parameter');
+Route::post('/parameter/input', [ParameterController::class, 'parameter_input'])->name('parameter_input');
 Route::get('/parameters/{parameter}/dart', [ParameterController::class, 'dart'])->name('dart');
-Route::post('/parameters/{parameter}/dart/spots/input', [SpotController::class, 'spots_input'])->name('spots_input');
-Route::get('/parameters/{parameter}/list', [SpotTripController::class, 'create'])->name('create');
-
+Route::group(['middleware' => ['auth', 'verified']], function(){
+	Route::post('/parameters/{parameter}/dart/spot/input', [SpotController::class, 'create_spots'])->name('create_spots');
+	Route::get('/users/{user}/trip/{trip}/list', [SpotTripController::class, 'create'])->name('create');
+});
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+	return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
@@ -38,17 +39,17 @@ require __DIR__.'/auth.php';
 
 /*
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+	return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::get('/users/{user}/trip/index', [TripController::class, 'index'])->middleware('auth')->name('trip.index');

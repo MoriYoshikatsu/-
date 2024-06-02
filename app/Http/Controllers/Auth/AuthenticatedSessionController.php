@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Parameter;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -28,8 +29,10 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        
+		$parameter = Parameter::latest("updated_at")->first();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        return redirect('/parameters/' . $parameter->id . '/dart');
     }
 
     /**

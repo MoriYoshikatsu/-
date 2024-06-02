@@ -3,12 +3,12 @@
 		<div id="map" style="height: 600px; width:1200px; float: left;"></div>
 		
 		<div id="place-result" style="float: right; width: 300px;">
-			<form action="/parameters/{{ $parameter->id }}/dart/spot/input" method="POST">
+			<form action="/users/{{ Auth::id() }}/trip/list" method="POST">
 				@csrf
 				<div id="spot-list"></div>
 				<input type="hidden" name="parameter_id" value={{ $parameter->id }}>
-				<input type="hidden" name="parameter[dart_latitude]" id="dart_latitude">
-				<input type="hidden" name="parameter[dart_longitude]" id="dart_longitude">
+				<input type="hidden" name="dart_latitude" id="dart_latitude">
+				<input type="hidden" name="dart_longitude" id="dart_longitude">
 				<button type="submit">送信</button>
 			</form>
 		</div>
@@ -22,7 +22,6 @@
 			let infoWindow;
 			const departureLocation = { lat: {{ $parameter->departure_latitude }}, lng: {{ $parameter->departure_longitude }} };
 			const r = getRadius();
-			let dartLocation = {}; // dartLocation をグローバルスコープで宣言
 			const redPin = "https://maps.google.com/mapfiles/ms/micons/red-pushpin.png";
 			const orangePin = "http://maps.google.com/mapfiles/ms/icons/orange-dot.png";
 			const bluePin = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
@@ -65,19 +64,12 @@
 				});
 			}
 			
-/*			function processSVData({ data }) {		// processSVData 関数を initMap 関数の外に移動する
-				const location = data.location;		// map 変数を参照するため、map を関数の外で定義するか、引数として渡す必要があります
+			function processSVData({ data }) {		// processSVData 関数を initMap 関数の外に移動する
+				const location = data.location;// map 変数を参照するため、map を関数の外で定義するか、引数として渡す必要があります
 				placeMarker(location.latLng, redPin);
 				map.setCenter(location.latLng);
-				dartLocation.lat = data.location.lat();		// データが取得された後に dartLocation の値をセットする
-				dartLocation.lng = data.location.lng();		// dartLocation の値を更新
-				
-				// Hidden Inputs の値を設定
-				document.getElementById('dart_latitude').value = dartLocation.lat;
-				document.getElementById('dart_longitude').value = dartLocation.lng;
 			}
-			console.log(location);
-*/			
+			
 			function initMap() {
 				map = new google.maps.Map(document.getElementById("map"), {
 					center: departureLocation,
@@ -99,18 +91,15 @@
 					var dartLat = departureLocation.lat + (distance / 111111) * Math.cos(angle);
 					var dartLng = departureLocation.lng + (distance / (111111 * Math.cos(departureLocation.lat * Math.PI / 180))) * Math.sin(angle);
 					var dartLocation = { lat: dartLat, lng: dartLng };
-					
-				placeMarker(dartLocation, redPin);
-				map.setCenter(dartLocation);
-/*				  Street View のデータを取得
-				sv.getPanorama({ location: dartLocation, radius: r*0.3 })
-					.then(processSVData)
-					.catch((e) => console.error("Street View data not found for this location."));
-*/				
+					sv.getPanorama({ location: dartLocation, radius: r*0.3 })
+						.then(processSVData)
+						.catch((e) => console.error("Street View data not found for this location."));
+				
+				// Set dart position to hidden inputs
 				document.getElementById('dart_latitude').value = dartLocation.lat;
 				document.getElementById('dart_longitude').value = dartLocation.lng;
-			
-			const request = {
+				
+				const request = {
 					location: dartLocation,
 					radius: r*0.5,
 					type: ['{{ $parameter->spot_category->en_name }}'],

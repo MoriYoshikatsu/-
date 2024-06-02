@@ -22,6 +22,8 @@ class ParameterFactory extends Factory
             'departure_longitude' => fake() ->randomFloat(2, 130, 140), //出発地経度
             'trip_time' => fake() ->randomNumber, //移動にかかる時間
             'transportation' => fake() -> word, //移動手段
+            'dart_latitude' => fake()-> randomFloat(2, 30, 40),
+            'dart_longitude' => fake()-> randomFloat(2, 130, 140),
             'created_at' => now(),
             'updated_at' => now(),
         ];

@@ -5,11 +5,11 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key={{ config('app.google_key') }}&libraries=places"></script>
 	
 	<div class="px-auto">
-		<form action="/parameters/input" method="POST">
+		<form action="/parameter/input" method="POST">
 			@method('post')
 			@csrf
-			<input type="hidden" name="parameter[user_id]" value="{{ Auth::id() }}"/>
-
+{{--			<input type="hidden" name="parameter[user_id]" value="{{ Auth::id() }}"/>
+--}}
 			<!-- 移動手段の選択 -->
 			<div class="transportation">
 				<label for="transportation">移動手段を選択:</label>
