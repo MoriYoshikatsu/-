@@ -31,7 +31,7 @@ class SpotTripController extends Controller
 		// $id = $request->route('trip');
 		// $spotTrips = Spot::whereHas('trips', function ($q) use($id) {$q->where('trips.id', '=', $id);})->get();
 		// dd($spots);
-		return view("trip.list")->with(["spotTrips" => $spotTrips, "trip" => $trip]);
+		return view("darts.list")->with(["spotTrips" => $spotTrips, "trip" => $trip]);
 	}
 	// spot_tripで行ったかどうかを更新
 	public function store_status(Request $request)

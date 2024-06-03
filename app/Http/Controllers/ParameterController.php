@@ -12,7 +12,7 @@ class ParameterController extends Controller
 {
 	public function parameter(SpotCategory $spot_category)
 	{
-		return view('input')->with(['spot_categories' => $spot_category->get()]);
+		return view('darts.input')->with(['spot_categories' => $spot_category->get()]);
 	}
 	
 	public function parameter_input(Request $request)
@@ -27,7 +27,7 @@ class ParameterController extends Controller
 	public function dart()
 	{
 		$parameter = Parameter::latest("updated_at")->first();
-		return view('dart')->with(['parameter' => $parameter]);
+		return view('darts.dart')->with(['parameter' => $parameter]);
 	}
 	
 /*綱川さんコード

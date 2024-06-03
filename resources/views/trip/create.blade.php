@@ -2,7 +2,7 @@
 	<x-slot name="title">投稿作成</x-slot>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.map_api') }}&libraries=streetView&callback=initMap&v=weekly"></script>
 	<div>
-		<form method="POST" action="/store/trip">
+		<form method="POST" action="/trip/store">
 			@csrf
 			<!--<input type="hidden" name="dart_latitude" value={{ $trip->parameter->dart_latitude }}>-->
 			<!--<input type="hidden" name="dart_longitude" value={{ $trip->parameter->dart_longitude }}>-->
