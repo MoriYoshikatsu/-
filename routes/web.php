@@ -16,16 +16,17 @@ Route::get('/welcome', function () {
 	return view('welcome');
    });
 
-Route::get('/', [ParameterController::class, 'parameter'])->name('parameter');
+Route::get('/', [ParameterController::class, 'parameter'])->name('dart_index');
 Route::post('/parameter/input', [ParameterController::class, 'parameter_input'])->name('parameter_input');
 Route::get('/parameters/{parameter}/dart', [ParameterController::class, 'dart'])->name('dart');
 Route::group(['middleware' => ['auth', 'verified']], function(){
-	Route::post('/parameters/{parameter}/dart/spot/input', [SpotController::class, 'create_spots'])->name('create_spots');
-	Route::get('/users/{user}/trip/{trip}/list', [SpotTripController::class, 'create'])->name('create');
+	Route::post('/parameters/{parameter}/dart/spot/input', [SpotController::class, 'create_spots'])->name('spots_create');
+	Route::get('/users/{user}/trip/{trip}/list', [SpotTripController::class, 'create'])->name('list_create');
 	Route::post('/store/spot_trip/status', [SpotTripController::class, 'store_status'])->name('store_status');
 	Route::get('/users/{user}/trip/{trip}/create', [TripController::class, 'create'])->name('trip_create');
-	Route::post('/store/trip', [TripController::class, 'store'])->middleware('auth');
-
+	Route::post('/trip/store', [TripController::class, 'store'])->name('trip_store');
+	Route::get('/trip/index', [TripController::class, 'index'])->name('trip_index');
+	Route::get('/show/trip/{trip}', [TripController::class, 'show'])->name('trip_show');
 
 });
 

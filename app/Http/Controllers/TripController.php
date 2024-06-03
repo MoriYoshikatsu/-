@@ -19,8 +19,9 @@ class TripController extends Controller
 	 */
 	public function index()
 	{
-		$spot_categories = SpotCategory::all();
-		return view("trip.index")->with(["spot_categories" => $spot_categories]);
+		$trips = Trip::all();
+
+		return view('trip.index')->with(['trips' => $trips]);
 	}
 
 	/**
@@ -54,17 +55,17 @@ class TripController extends Controller
 	 */
 	public function store(Request $request, Trip $trip)
 	{
-		$parameter = Parameter::where('user_id', Auth::id())->latest("updated_at")->first();
+		$parameter = Parameter::latest("updated_at")->first();
+		$trip->user_id = Auth::id();
 		$trip->parameter_id = $parameter->id;
 		$trip->title = $request->title;
 		$trip->description = $request->description;
-		
 		$trip->trip_date = $request->trip_date;
 		$trip->status = $request->status;
 	
 		$trip->save();
 	
-		return redirect('/users/' . Auth::id() . '/trip/index');
+		return redirect('/trip/index');
 	}
 
 	/**
@@ -75,7 +76,9 @@ class TripController extends Controller
 	 */
 	public function show(Trip $trip)
 	{
-		//
+		$spotTrips = SpotTrip::where('trip_id', $trip->id)->get();
+		dd($spotTrips);
+		return view('trip.show')->with(['trip' => $trip, 'spotTrips' => $spotTrips]);
 	}
 
 	/**

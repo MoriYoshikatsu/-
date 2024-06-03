@@ -54,19 +54,7 @@
 			});
 		};
 			
-		function placeMarkerWithInfo(lat, lng, iconUrl, place) {
-			const marker = placeMarker({ lat: lat, lng: lng }, iconUrl);
-			
-			google.maps.event.addListener(marker, 'click', function() {
-				const content = `
-					<div>
-						<strong><a href="https://www.google.com/search?q=${encodeURIComponent(place.name)}" target="_blank">${place.name}</a></strong>
-						<p>${place.vicinity}</p>
-					</div>`;
-				infoWindow.setContent(content);
-				infoWindow.open(map, marker);
-			});
-		}
+	
 	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.map_api') }}&callback=initMap&libraries=places"></script>
 </x-app-layout>
