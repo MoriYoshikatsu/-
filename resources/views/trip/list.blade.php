@@ -7,8 +7,8 @@
 			@csrf
 			@foreach ($spotTrips as $spotTrip)
 				<div>
-					<input type="checkbox" id="spot_{{ $spotTrip->id }}" name="spots[]" value="{{ $spotTrip->id }}" data-latitude="{{ $spotTrip->latitude }}" data-longitude="{{ $spotTrip->longitude }}" class="spot-checkbox">
-					<label for="spot_{{ $spotTrip->id }}">{{ $spotTrip->name }}</label>
+					<input type="checkbox" id="spot_{{ $spotTrip->spot->id }}" name="spots[]" value="{{ $spotTrip->spot->id }}" data-latitude="{{ $spotTrip->spot->latitude }}" data-longitude="{{ $spotTrip->spot->longitude }}" class="spot-checkbox">
+					<label for="spot_{{ $spotTrip->spot->id }}">{{ $spotTrip->spot->name }}</label>
 				</div>
 			@endforeach
 			<button type="submit">送信</button>
@@ -16,16 +16,18 @@
 	</div>
 	<script>
 		const dartLocation = { lat: {{ $trip->parameter->dart_latitude }}, lng: {{ $trip->parameter->dart_longitude }} };
+		let infoWindow;
 		const redPin = "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
 		const bluePin = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
 		const greenPin = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
 
-		document.addEventListener('DOMContentLoaded', function() {
+		function initMap() {
 			var map = new google.maps.Map(document.getElementById('map'), {
 				center: dartLocation,
 				zoom: 13
 			});
-
+			
+			infoWindow = new google.maps.InfoWindow();
 			// dartsLocationにピン
 			new google.maps.Marker({
 				position: dartLocation,
@@ -48,8 +50,23 @@
 				checkbox.addEventListener('change', function() {
 					marker.setIcon(this.checked ? redPin : bluePin);
 				});
+				
 			});
-		});
+		};
+			
+		function placeMarkerWithInfo(lat, lng, iconUrl, place) {
+			const marker = placeMarker({ lat: lat, lng: lng }, iconUrl);
+			
+			google.maps.event.addListener(marker, 'click', function() {
+				const content = `
+					<div>
+						<strong><a href="https://www.google.com/search?q=${encodeURIComponent(place.name)}" target="_blank">${place.name}</a></strong>
+						<p>${place.vicinity}</p>
+					</div>`;
+				infoWindow.setContent(content);
+				infoWindow.open(map, marker);
+			});
+		}
 	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ config('services.map_api') }}&callback=initMap&libraries=places"></script>
 </x-app-layout>

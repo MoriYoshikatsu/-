@@ -25,26 +25,29 @@ class SpotTripController extends Controller
 	// 行く予定だったspotを行ったかどうかを更新するview
 	public function create(Request $request, Parameter $parameter)
 	{
-		$id = $request->route('trip');
+		$trip = Trip::where('user_id', Auth::id())->latest("updated_at")->first();
 		$parameter = Parameter::latest("updated_at")->first();
-		$trip = Trip::where('parameter_id', $parameter->id)->latest("updated_at")->first();
-		// $spotTrips = SpotTrip::where('trip_id', $trip->id)->get();
-		$spots = Spot::whereHas('trips', function ($q) use($id) {$q->where('trips.id', '=', $id);})->get();
+		$spotTrips = SpotTrip::where('trip_id', $trip->id)->get();
+		// $id = $request->route('trip');
+		// $spotTrips = Spot::whereHas('trips', function ($q) use($id) {$q->where('trips.id', '=', $id);})->get();
 		// dd($spots);
-		return view("trip.list")->with(["spotTrips" => $spots, "trip" => $trip]);
+		return view("trip.list")->with(["spotTrips" => $spotTrips, "trip" => $trip]);
 	}
 	// spot_tripで行ったかどうかを更新
 	public function store_status(Request $request)
 	{
 		$spotIds = $request['spots'];
+		$trip = Trip::where('user_id', Auth::id())->latest("updated_at")->first();
+		// dd($spotIds);
 		foreach($spotIds as $spotId) {
+			// $trip->spots()->attach($spotId, ['status' => 1, 'updated_at' => now()]);
 			$spotTrip = SpotTrip::where('spot_id', $spotId)->first();
 			$spotTrip->status = 1;
 			$spotTrip->save();
 			
 			$tripId = $spotTrip->trip_id;
 		}
-		return redirect('/users/' . Auth::id() . '/create/trip/' . $tripId);
+		return redirect('/users/' . Auth::id() . '/trip/' . $trip->id . '/create');
 	}
 	/**
 	 * Display the specified resource.

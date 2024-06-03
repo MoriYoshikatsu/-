@@ -20,11 +20,11 @@ class Spot extends Model
 	public function trips(){
 		return $this->belongsToMany(Trip::class);
 	}
-/*	
+	
 	public function spot_trips() {
 		return $this->hasmany(SpotTrip::class);
 	}
-*/	
+	
 	
 	public function spot_category() {
 		return $this->belongsTo(SpotCategory::class);

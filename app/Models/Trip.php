@@ -33,12 +33,12 @@ class Trip extends Model
 	public function spots() {
 		return $this->belongsToMany(Spot::class);
 	}
-/*	
+	
 	public function spot_trips()   
 	{
 		return $this->hasMany(SpotTrip::class);
 	}
-*/	
+	
 	public function likes()   
 	{
 		return $this->hasMany(Like::class);
