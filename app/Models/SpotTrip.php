@@ -15,13 +15,13 @@ class SpotTrip extends Model
 		'created_at',
 		'updated_at',
 	];
-/*	
-	public function trips(){
-		return $this->belongsToMany(Trip::class);
+	
+	public function trip(){
+		return $this->belongsTo(Trip::class);
 	}
 	
-	public function spots() {
-		return $this->belongsToMany(Spot::class);
+	public function spot() {
+		return $this->belongsTo(Spot::class);
 	}
-*/
+
 }

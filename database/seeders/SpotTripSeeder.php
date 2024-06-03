@@ -16,7 +16,7 @@ class SpotTripSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('spot_trip')->insert([
+        DB::table('spot_trips')->insert([
             'spot_id' => '1',
             'trip_id' => '1',
             'status' => '1',
@@ -24,7 +24,7 @@ class SpotTripSeeder extends Seeder
             'updated_at' => new DateTime(), //綱川流
         ]);
         
-          DB::table('spot_trip')->insert([
+          DB::table('spot_trips')->insert([
             'spot_id' => '2',
             'trip_id' => '1',
             'status' => '1',

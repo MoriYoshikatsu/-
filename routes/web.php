@@ -22,6 +22,11 @@ Route::get('/parameters/{parameter}/dart', [ParameterController::class, 'dart'])
 Route::group(['middleware' => ['auth', 'verified']], function(){
 	Route::post('/parameters/{parameter}/dart/spot/input', [SpotController::class, 'create_spots'])->name('create_spots');
 	Route::get('/users/{user}/trip/{trip}/list', [SpotTripController::class, 'create'])->name('create');
+	Route::post('/store/spot_trip/status', [SpotTripController::class, 'store_status'])->name('store_status');
+	Route::get('/users/{user}/trip/{trip}/create', [TripController::class, 'create'])->name('trip_create');
+	Route::post('/store/trip', [TripController::class, 'store'])->middleware('auth');
+
+
 });
 
 Route::get('/dashboard', function () {

@@ -30,7 +30,7 @@ class ParameterController extends Controller
 		return view('dart')->with(['parameter' => $parameter]);
 	}
 	
-/*綱川さんコード*/
+/*綱川さんコード
 	public function show_darts()
 	{
 		$parameter = Parameter::where("user_id", Auth::id())->latest("updated_at")->first();
@@ -45,5 +45,5 @@ class ParameterController extends Controller
 		
 		return redirect('users/' . Auth::id() . '/trip/darts');
 	}
-
+*/
 }

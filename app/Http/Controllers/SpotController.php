@@ -74,12 +74,12 @@ class SpotController extends Controller
 		$trip->save();
 		
 		foreach($spotIds as $spotId) {
-			$trip->spots()->attach($spotId, ['status' => 0, 'created_at' => now(), 'updated_at' => now()]);
-			// $spotTrip = new SpotTrip();
-			// $spotTrip->spot_id = $spotId;
-			// $spotTrip->trip_id = $trip->id;
-			// $spotTrip->status = 0;
-			// $spotTrip->save();
+			// $trip->spots()->attach($spotId, ['status' => 0, 'created_at' => now(), 'updated_at' => now()]);
+			$spotTrip = new SpotTrip();
+			$spotTrip->spot_id = $spotId;
+			$spotTrip->trip_id = $trip->id;
+			$spotTrip->status = 0;
+			$spotTrip->save();
 		}
 		
 		return redirect('/users/' . Auth::id() . '/trip/'. $trip->id . '/list');
